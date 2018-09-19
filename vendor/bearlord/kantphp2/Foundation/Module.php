@@ -582,8 +582,6 @@ class Module extends ServiceLocator
                     $this->make($segments[0]),
                     $method
                         ], $parameters);
-
-        // return $this->call([Kant::$container->get($segments[0]), $method], $parameters);
     }
 
     /**
@@ -592,18 +590,6 @@ class Module extends ServiceLocator
     public function make($class)
     {
         return Kant::createObject($class);
-    }
-
-    /**
-     * Determine if the given options exclude a particular method.
-     *
-     * @param string $method            
-     * @param array $options            
-     * @return bool
-     */
-    protected static function methodExcludedByOptions($method, array $options)
-    {
-        return (isset($options['only']) && !in_array($method, (array) $options['only'])) || (!empty($options['except']) && in_array($method, (array) $options['except']));
     }
 
 }
