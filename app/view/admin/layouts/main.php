@@ -1,5 +1,5 @@
 <?php
-    use app\module\index\Assets\AppAsset;
+    use app\modules\index\assets\AppAsset;
     AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

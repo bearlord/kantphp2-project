@@ -1,6 +1,6 @@
 <?php
 
-namespace app\module\index\Assets;
+namespace app\modules\index\Assets;
 
 use Kant\View\AssetBundle;
 

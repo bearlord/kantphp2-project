@@ -1,15 +1,15 @@
 <?php
 
-namespace app\module\index\Controllers;
+namespace app\modules\index\Controllers;
 
 use Kant\Controller\Controller;
 use Kant\Http\Request;
 use Kant\Http\Response;
 use Kant\Session\Session;
 
-class IndexController extends Controller
+class TestController extends Controller
 {
-//    public $layout = false;
+//    public $routePattern = self::ROUTE_PATTERN_EXPLICIT;
 
 	public function indexAction(Response $response, Session $session)
 	{
@@ -30,7 +30,8 @@ class IndexController extends Controller
     
     public function templateAction()
     {
-        return $this->view->fetch('/template');
+        echo "<h1>Index/Test/Template</h1>";
+        return $this->view->render('template');
     }
 
 }
