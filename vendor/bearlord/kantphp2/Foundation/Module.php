@@ -442,7 +442,7 @@ class Module extends ServiceLocator
 			$controllerName = str_replace(' ', '', ucwords(str_replace('-', ' ', $controllerName)));
 		}
 
-		$className = sprintf("app\module\%s\Controllers\%sController", $moduleName, ucfirst($controllerName));
+		$className = sprintf("app\module\%s\controllers\%sController", $moduleName, ucfirst($controllerName));
 
 		if (strpos($className, '-') !== false || !class_exists($className)) {
 			return null;
