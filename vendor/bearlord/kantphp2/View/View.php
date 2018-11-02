@@ -296,20 +296,6 @@ class View extends BaseView
     }
 
     /**
-     * Display template
-     * @deprecated
-     *
-     * @param string $view            
-     * @throws RuntimeException
-     */
-    public function display($view = '')
-    {
-        $content = $this->fetch($view);
-        header("X-Powered-By:KantPHP Framework");
-        echo $content;
-    }
-
-    /**
      * Fetach template
      *
      * @param type $view            
@@ -329,16 +315,40 @@ class View extends BaseView
      */
 
     public function render($view = "", $params = [], $context = null)
-    {
+    {		
         $content = $this->fetch($view, $params);
+        return $this->renderContent($content);
+    }
+	
+	/**
+     * Renders a static string by applying a layout.
+     * @param string $content the static string being rendered
+     * @return string the rendering result of the layout with the given static string as the `$content` variable.
+     * If the layout is disabled, the string will be returned back.
+     * @since 2.0.1
+     */
+    public function renderContent($content)
+    {
         $layoutFile = $this->findLayoutFile();
         if ($layoutFile !== false) {
-            return $this->renderFile($layoutFile, array_merge([
+            return $this->renderFile($layoutFile, [
                 'content' => $content
-            ], $params));
-        } else {
-            return $content;
-        }
+            ]);
+        } 
+		return $content;
+    }
+	
+	/**
+     * Renders a view without applying layout.
+     * This method differs from [[render()]] in that it does not apply any layout.
+     * @param string $view the view name. Please refer to [[render()]] on how to specify a view name.
+     * @param array $params the parameters (name-value pairs) that should be made available in the view.
+     * @return string the rendering result.
+     * @throws InvalidParamException if the view file does not exist.
+     */
+    public function renderPartial($view, $params = [])
+    {
+        return $this->render($view, $params, $this);
     }
 
     /**
