@@ -22,7 +22,7 @@ use Kant\Kant;
  * @property int $created_at
  * @property int $updated_at
  */
-class Admin extends \Kant\Database\ActiveRecord
+class Admin extends \Kant\Database\ActiveRecord implements \Kant\Identity\IdentityInterface
 {
     /**
      * @inheritdoc
@@ -73,4 +73,85 @@ class Admin extends \Kant\Database\ActiveRecord
             'updated_at' => Kant::t('app', 'Updated At'),
         ];
     }
+	
+	/**
+	 * Finds user by username
+	 *
+	 * @param string $username
+	 * @return static|null
+	 */
+	public static function findByUsername($username)
+	{
+		$row = self::find()->where([
+					'username' => $username
+				])->one();
+		return $row;
+	}
+
+	/**
+	 * Generate authKey
+	 */
+	public function generateAuthKey()
+	{
+		$this->auth_key = Kant::$app->security->generateRandomString();
+		$this->save(false);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function findIdentity($id)
+	{
+		$row = self::find()->where([
+					'id' => $id
+				])->one();
+		return $row;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public static function findIdentityByAccessToken($token, $type = null)
+	{
+		$row = self::find()->where([
+					'access_token' => $token
+				])->one();
+		return $row;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getId()
+	{
+		return $this->getPrimaryKey();
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getAuthKey()
+	{
+		return $this->auth_key;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function validateAuthKey($authKey)
+	{
+		return $this->auth_key === $authKey;
+	}
+
+	/**
+	 * Validates password
+	 *
+	 * @param string $password
+	 *            password to validate
+	 * @return bool if password provided is valid for current user
+	 */
+	public function validatePassword($password)
+	{
+		return Kant::$app->security->validatePassword($password, $this->password_hash);
+	}
 }

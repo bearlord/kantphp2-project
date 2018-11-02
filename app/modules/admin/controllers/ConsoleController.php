@@ -4,6 +4,8 @@ namespace app\modules\admin\controllers;
 
 use Kant\Kant;
 use Kant\Web\Controller;
+use Kant\Http\Request;
+use Kant\Http\Response;
 use app\modules\admin\models\SigninForm;
 
 class ConsoleController extends Controller
@@ -11,17 +13,17 @@ class ConsoleController extends Controller
 
 	public $layout = 'console';
 
-	public function indexAction()
+	public function indexAction(Request $request, Response $response)
 	{
 		$model = new SigninForm();
 
 		$this->view->layout = 'console';
 		
-        if (Kant::$app->request->isPost) {
-            $post = Kant::$app->request->post();
+        if ($request->isMethod('post')) {
+            $post = $request->input();
             $model->load($post);
             if ($model->validate() && $model->login()) {
-                $this->redirect(["/wpm/index"]);
+                $this->redirect("/admin/index");
             }
         }
 

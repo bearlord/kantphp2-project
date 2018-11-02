@@ -2,7 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
-class AdminBaseController
+class AdminBaseController extends \Kant\Web\Controller
 {
-	//put your code here
+	public $layout = 'main';
 }

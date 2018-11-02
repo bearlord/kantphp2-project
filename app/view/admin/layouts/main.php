@@ -1,5 +1,5 @@
 <?php
-    use app\modules\index\assets\AppAsset;
+    use app\modules\admin\assets\AppAsset;
     AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -11,15 +11,8 @@
     </head>
     <?php $this->beginBody() ?>
     <body>
-        <header></header>
-        <main>
-            <div class="wrap">
-                <?php
-                echo $content;
-                ?>
-            </div>
-
-        </main>  
+         <?php echo $content; ?>
+		
         <?php $this->endBody() ?>
     </body>
 </html>
