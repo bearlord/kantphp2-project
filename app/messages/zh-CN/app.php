@@ -1,8 +1,13 @@
 <?php
 return [
 	"Access Token" => "Access Token",
+	"All Articles" => "所有文章",
+	"Articles" => "文章",
 	"Auth Key" => "Auth Key",
+	"Categories" => "类别",
+	"Comments" => "评论",
 	"Created At" => "记录时间",
+	"Dashboard" => "仪表盘",
 	"Email" => "邮箱",
 	"Hello! let's get started" => '你好！让我们开始吧',
 	"ID" => "ID",
@@ -14,6 +19,7 @@ return [
 	"Password" => "密码",
 	"Password Hash" => "Password Hash",
 	"Pertain" => "属于",
+	"Post Article" => "写文章",
 	"Realname" => "真实姓名",
 	"Updated At" => "修改时间",
 	"Username" => "用户名",
