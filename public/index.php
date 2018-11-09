@@ -4,7 +4,7 @@ defined('KANT_DEBUG') or define('KANT_DEBUG', true);
 //Application path
 define('APP_PATH', __DIR__ . '/../app');
 
-include __DIR__ . '/../vendor/kantphp/Framework.php';
+include __DIR__ . '/../vendor/bearlord/kantphp2/Framework.php';
 
 $env = 'dev';
 
