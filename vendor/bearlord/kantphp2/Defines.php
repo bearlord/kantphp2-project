@@ -27,5 +27,3 @@ define('PUBLIC_PATH', dirname(APP_PATH)  . '/public/');
 if (! defined('APP_URL')) {
     define('APP_URL', substr(dirname($_SERVER['SCRIPT_NAME']), - 1, 1) == '/' ? dirname($_SERVER['SCRIPT_NAME']) : trim(dirname($_SERVER['SCRIPT_NAME']), "\\") . '/');
 }
-
-require_once KANT_PATH . '/Function/Global.php';
