@@ -102,7 +102,7 @@ class Captcha extends InputWidget
         
         static::checkRequirements();
         
-        if (! isset($this->imageOptions['id'])) {
+        if (!isset($this->imageOptions['id'])) {
             $this->imageOptions['id'] = $this->options['id'] . '-image';
         }
     }

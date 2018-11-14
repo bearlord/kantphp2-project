@@ -41,6 +41,10 @@ use Kant\Exception\InvalidConfigException;
  */
 class Module extends ServiceLocator
 {
+	/**
+     * @var array custom module parameters (name => value).
+     */
+    public $params = [];
 
 	/**
 	 * @var string an ID that uniquely identifies this module among other modules which have the same [[module|parent]].
