@@ -67,11 +67,11 @@ php composer.phar require --prefer-dist mihaildev/yii2-elfinder "*"
                 ],
                 [
                     'path' => 'files/some',
-                    'name' => ['category' => 'my','message' => 'Some Name'] //перевод Yii::t($category, $message)
+                    'name' => ['category' => 'my','message' => 'Some Name'] //перевод Kant::tt($category, $message)
                 ],
                 [
                     'path'   => 'files/some',
-                    'name'   => ['category' => 'my','message' => 'Some Name'], // Yii::t($category, $message)
+                    'name'   => ['category' => 'my','message' => 'Some Name'], // Kant::tt($category, $message)
                     'access' => ['read' => '*', 'write' => 'UserFilesAccess'] // * - для всех, иначе проверка доступа в даааном примере все могут видет а редактировать могут пользователи только с правами UserFilesAccess
                 ]
             ],

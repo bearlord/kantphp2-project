@@ -42,7 +42,7 @@ class BaseController extends Controller{
 		return $this->connectOptions;
 	}
 
-	public function actionConnect(){
+	public function connectAction(){
 		return $this->view->renderFile(__DIR__."/views/connect.php", ['options'=>$this->getOptions(), 'plugin' => $this->plugin]);
 	}
 

@@ -37,7 +37,7 @@ class PathController extends BaseController
 		if ($this->_options !== null)
 			return $this->_options;
 
-		$subPath = Kant::$app->request->getQueryParam('path', '');
+		$subPath = Kant::$app->request->query('path', '');
 
 		$this->_options['roots'] = [];
 

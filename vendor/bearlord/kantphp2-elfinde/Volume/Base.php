@@ -31,7 +31,7 @@ class Base extends BaseObject{
 
 	public function getAlias(){
 		if(is_array($this->name)){
-			return Yii::t($this->name['category'], $this->name['message']);
+			return Kant::tt($this->name['category'], $this->name['message']);
 		}
 
 		return $this->name;
@@ -52,7 +52,7 @@ class Base extends BaseObject{
 		if(isset($this->access['write'])){
 			$this->_defaults['write'] = true;
 			if($this->access['write'] != '*'){
-				$this->_defaults['write'] = Yii::$app->user->can($this->access['write']);
+				$this->_defaults['write'] = Kant::$app->user->can($this->access['write']);
 			}
 		}
 
@@ -61,7 +61,7 @@ class Base extends BaseObject{
 		}elseif(isset($this->access['read'])){
 			$this->_defaults['read'] = true;
 			if($this->access['read'] != '*'){
-				$this->_defaults['read'] = Yii::$app->user->can($this->access['read']);
+				$this->_defaults['read'] = Kant::$app->user->can($this->access['read']);
 			}
 		}
 

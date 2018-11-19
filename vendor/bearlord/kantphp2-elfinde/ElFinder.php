@@ -30,6 +30,10 @@ class ElFinder extends BaseWidjet
 	public $containerOptions = [];
 	public $frameOptions = [];
 	public $controller = 'elfinder';
+	
+	public $roots;
+	public $bind;
+	public $plugin;
 
 	public static function genPathHash($path)
 	{
@@ -83,7 +87,7 @@ class ElFinder extends BaseWidjet
 	public function init()
 	{
 		if (empty($this->language))
-			$this->language = self::getSupportedLanguage(Yii::$app->language);
+			$this->language = self::getSupportedLanguage(Kant::$app->language);
 
 		$managerOptions = [];
 		if (!empty($this->filter))

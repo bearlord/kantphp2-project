@@ -42,7 +42,7 @@ class InputFile extends InputWidget{
 		parent::init();
 
 		if(empty($this->language))
-			$this->language = ElFinder::getSupportedLanguage(Yii::$app->language);
+			$this->language = ElFinder::getSupportedLanguage(Kant::$app->language);
 
 		if(empty($this->buttonOptions['id']))
 			$this->buttonOptions['id'] = $this->options['id'].'_button';
