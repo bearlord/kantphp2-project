@@ -103,7 +103,7 @@ class ModuleDispatcher
 		$module = array_shift($path);
 		$module = !empty($module) ? $module : $this->defaultRoute['module'];
 		$controller = !empty($path) ? array_shift($path) : $this->defaultRoute['controller'];
-		$action = !empty($path) ? array_shift($path) : $this->defaultRoute['action'];
+		$action = !empty($path) ? array_shift($path) : '';
 		
 		$route = sprintf("%s/%s/%s", $module, $controller, $action);
 		return [

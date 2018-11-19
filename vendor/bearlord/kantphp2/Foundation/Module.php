@@ -41,10 +41,11 @@ use Kant\Exception\InvalidConfigException;
  */
 class Module extends ServiceLocator
 {
+
 	/**
-     * @var array custom module parameters (name => value).
-     */
-    public $params = [];
+	 * @var array custom module parameters (name => value).
+	 */
+	public $params = [];
 
 	/**
 	 * @var string an ID that uniquely identifies this module among other modules which have the same [[module|parent]].
@@ -407,6 +408,16 @@ class Module extends ServiceLocator
 		}
 
 		if (strpos($route, '/') !== false) {
+			list ($id, $_route) = explode('/', $route, 2);
+		} 
+
+		// module and controller map take precedence
+		if (isset($this->controllerMap[$id])) {
+			$controller = Kant::createObject($this->controllerMap[$id], [$id, $this]);
+			return [$controller, $_route];
+		}
+		
+		if ($pos = strpos($route, '/') !== false) {
 			$path = explode("/", $route);
 			if (count($path) !== 3) {
 				return false;

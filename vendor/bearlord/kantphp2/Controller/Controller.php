@@ -133,7 +133,9 @@ class Controller extends Component
      */
     public function runActions($id, $params = [])
     {
+
         $action = $this->createActions($id);
+		
         if ($action === null) {
             throw new InvalidArgumentException('Unable to resolve the request: ' . $this->getUniqueId() . '/' . $id);
         }
