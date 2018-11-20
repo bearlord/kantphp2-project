@@ -76,9 +76,10 @@ class BaseController extends Controller{
 				$options['onlyMimes'] = [$_GET['filter']];
 		}
 
-		if(isset($_GET['lang']))
-			$options['lang'] = $_GET['lang'];
-
+		if(isset($_GET['lang'])) {
+			$options['lang'] = ElFinder::getSupportedLanguage($_GET['lang']);
+		}
+		
 		if(isset($_GET['callback'])){
 			if(isset($_GET['multiple']))
 				$options['commandsOptions']['getfile']['multiple'] = true;
@@ -89,12 +90,14 @@ class BaseController extends Controller{
 				'window.close(); }');
 		}
 
-		if(!isset($options['lang']))
+		if(!isset($options['lang'])) {
 			$options['lang'] = ElFinder::getSupportedLanguage(Kant::$app->language);
-
-		if(!empty($this->disabledCommands))
+		}
+		
+		if(!empty($this->disabledCommands)) {
 			$options['commands'] = new JsExpression('ElFinderGetCommands('.Json::encode($this->disabledCommands).')');
-
+		}
+		
         if(isset($this->managerOptions['handlers'])) {
             $handlers = [];
             foreach ($this->managerOptions['handlers'] as $event => $js) {

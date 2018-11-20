@@ -41,33 +41,38 @@ class InputFile extends InputWidget{
 	{
 		parent::init();
 
-		if(empty($this->language))
+		if(empty($this->language)) {
 			$this->language = ElFinder::getSupportedLanguage(Kant::$app->language);
-
-		if(empty($this->buttonOptions['id']))
+		}
+		
+		if(empty($this->buttonOptions['id'])) {
 			$this->buttonOptions['id'] = $this->options['id'].'_button';
-
+		}
 		$this->buttonOptions['type'] = 'button';
 
 		$managerOptions = [];
-		if(!empty($this->filter))
+		if(!empty($this->filter)) {
 			$managerOptions['filter'] = $this->filter;
-
+		}
+		
 		$managerOptions['callback'] = $this->options['id'];
 
-		if(!empty($this->language))
+		if(!empty($this->language)) {
 			$managerOptions['lang'] = $this->language;
-
-		if (!empty($this->multiple))
+		}
+		
+		if (!empty($this->multiple)) {
 			$managerOptions['multiple'] = $this->multiple;
-
-		if(!empty($this->path))
+		}
+		
+		if(!empty($this->path)) {
 			$managerOptions['path'] = $this->path;
-
+		}
 		$params = $managerOptions;
-		if(!empty($this->startPath))
+		if(!empty($this->startPath)) {
 			$params['#'] = ElFinder::genPathHash($this->startPath);
-
+		}
+		
 		$this->_managerOptions['url'] = ElFinder::getManagerUrl($this->controller, $params);
 		$this->_managerOptions['width'] = $this->width;
 		$this->_managerOptions['height'] = $this->height;
