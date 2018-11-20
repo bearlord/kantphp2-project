@@ -57,7 +57,7 @@ class ModuleDispatcher
 	public function dispatch(Request $request)
 	{
 		$dispatcher = $this->parseUrl($request->path());
-		return $this->run($dispatcher['route']);
+		return $this->run($dispatcher);
 	}
 
 	/**
@@ -67,7 +67,7 @@ class ModuleDispatcher
 	 */
 	public function parseUrl($url)
 	{
-		$result = $this->parseRoute(strtolower($url));
+		$result = $this->parseRoute($url);
 		return $result;
 	}
 
@@ -78,6 +78,9 @@ class ModuleDispatcher
 	 */
 	protected function parseRoute($pathinfo)
 	{
+		/*
+		$pathinfo = strtolower(trim($pathinfo, "/"));
+		
 		$route = [
 			null,
 			null,
@@ -110,6 +113,9 @@ class ModuleDispatcher
 			'route' => $route,
 			'var' => $var
 		];
+		*/
+		
+		return strtolower(trim($pathinfo, "/"));
 	}
 
 	/**
