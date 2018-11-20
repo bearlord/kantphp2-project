@@ -25,7 +25,7 @@ class Assets extends AssetBundle
 		'js/elfinder.min.js'
 	);
 	public $depends = array(
-//		'yii\jui\JuiAsset',
+		'Kant\Elfinder\JQueryUiAssets',
 	);
 
 	/**

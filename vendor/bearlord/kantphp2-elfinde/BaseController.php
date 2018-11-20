@@ -50,7 +50,7 @@ class BaseController extends Controller{
 		$options = [
 			'url'=> Url::to('connect'),
 			'customData' => [
-				Kant::$app->request->csrfParam => Kant::$app->request->csrfToken
+				Kant::$app->request->csrfParam => Kant::$app->request->getCsrfToken()
 			],
 			'resizable' => false
 		];

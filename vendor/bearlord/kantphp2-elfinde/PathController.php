@@ -1,17 +1,5 @@
 <?php
 
-/**
- * Date: 28.11.2014
- * Time: 14:21
- *
- * This file is part of the MihailDev project.
- *
- * (c) MihailDev project <http://github.com/mihaildev/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace Kant\Elfinder;
 
 use Kant\Kant;
@@ -92,7 +80,8 @@ class PathController extends BaseController
 	public function getManagerOptions()
 	{
 		$options = parent::getManagerOptions();
-		$options['url'] = Url::to('connect', ['path' => Kant::$app->request->query('path', '')]);
+		$route = Url::normalizeRoute('connect');
+		$options['url'] = Url::to($route, ['path' => Kant::$app->request->query('path', '')]);
 		return $options;
 	}
 

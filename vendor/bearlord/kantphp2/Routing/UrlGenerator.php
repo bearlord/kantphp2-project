@@ -192,7 +192,7 @@ class UrlGenerator
         
         return $this->format($root, '/' . trim($path, '/')) . $this->httpBluidQuery($tail, $query);
     }
-
+	
     /**
      * Generate a secure, absolute URL to the given path.
      *
