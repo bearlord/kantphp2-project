@@ -19,7 +19,7 @@ class TinymceLangAsset extends AssetBundle
 
 	public function init()
 	{
-		$this->sourcePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'assets\\langs\\';
+		$this->sourcePath = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'assets/langs/';
 		$jsFileName = Kant::$app->language . ".js";
 		if (file_exists($this->sourcePath . $jsFileName)) {
 			$this->js = [

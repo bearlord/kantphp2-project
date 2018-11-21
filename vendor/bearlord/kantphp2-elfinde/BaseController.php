@@ -70,10 +70,11 @@ class BaseController extends Controller{
 		}
 
 		if(isset($_GET['filter'])){
-			if(is_array($_GET['filter']))
+			if(is_array($_GET['filter'])) {
 				$options['onlyMimes'] = $_GET['filter'];
-			else
+			} else {
 				$options['onlyMimes'] = [$_GET['filter']];
+			}
 		}
 
 		if(isset($_GET['lang'])) {
@@ -81,9 +82,9 @@ class BaseController extends Controller{
 		}
 		
 		if(isset($_GET['callback'])){
-			if(isset($_GET['multiple']))
+			if(isset($_GET['multiple'])) {
 				$options['commandsOptions']['getfile']['multiple'] = true;
-
+			}
 			$options['getFileCallback'] = new JsExpression('function(file){ '.
 				'if (window!=window.top) {var parent = window.parent;}else{var parent = window.opener;}'.
 				'if(parent.mihaildev.elFinder.callFunction('.Json::encode($_GET['callback']).', file))'.

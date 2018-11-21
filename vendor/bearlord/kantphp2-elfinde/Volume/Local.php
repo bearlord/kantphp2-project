@@ -23,8 +23,8 @@ class Local extends Base
 
 	public function getRealPath()
 	{
-		$path = Kant::getAlias($this->basePath . '/' . trim($this->path, '/'));
-
+		$path = realpath(Kant::getAlias($this->basePath)) . '/' . trim($this->path, '/');
+		
 		if (!is_dir($path)) {
 			mkdir($path, 0777, true);
 		}

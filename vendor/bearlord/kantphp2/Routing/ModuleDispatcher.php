@@ -115,7 +115,16 @@ class ModuleDispatcher
 		];
 		*/
 		
-		return strtolower(trim($pathinfo, "/"));
+		
+		$pathinfo = strtolower(trim($pathinfo, "/"));
+		
+		$route = $pathinfo;
+		
+		if (strpos($pathinfo, "/") === false) {
+			$route = $pathinfo . "/" . $this->defaultRoute['controller'];
+		} 
+
+		return $route;
 	}
 
 	/**

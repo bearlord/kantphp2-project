@@ -82,11 +82,11 @@ class Base extends BaseObject{
 		if(!empty($this->tmbPath)){
 			$this->tmbPath = trim($this->tmbPath, '/');
 			$options['tmbPath'] = Kant::getAlias('@webroot/'.$this->tmbPath);
-			$options['tmbURL'] = Kant::$app->request->getHttpHost() . Kant::getAlias('@web/'.$this->tmbPath);
+			$options['tmbURL'] = Kant::$app->request->getSchemeAndHttpHost() . Kant::getAlias('@web/'.$this->tmbPath);
 		}else{
 			$subPath = md5($this->className().'|'.serialize($this->name));
 			$options['tmbPath'] = Kant::$app->assetManager->getPublishedPath(__DIR__).DIRECTORY_SEPARATOR.$subPath;
-			$options['tmbURL'] = Kant::$app->request->getHttpHost() . Kant::$app->assetManager->getPublishedUrl(__DIR__). '/'. $subPath;
+			$options['tmbURL'] = Kant::$app->request->getSchemeAndHttpHost() . Kant::$app->assetManager->getPublishedUrl(__DIR__). '/'. $subPath;
 		}
 
 		FileHelper::createDirectory($options['tmbPath']);

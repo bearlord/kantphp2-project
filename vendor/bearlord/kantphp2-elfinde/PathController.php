@@ -55,9 +55,10 @@ class PathController extends BaseController
 		$root = Kant::createObject($root);
 
 		/** @var Local $root */
-		if ($root->isAvailable())
+		if ($root->isAvailable()) {
 			$this->_options['roots'][] = $root->getRoot();
-
+		}
+		
 		if (!empty($this->watermark)) {
 			$this->_options['bind']['upload.presave'] = 'Plugin.Watermark.onUpLoadPreSave';
 

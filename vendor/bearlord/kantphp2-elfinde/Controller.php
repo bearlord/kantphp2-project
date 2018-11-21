@@ -33,17 +33,20 @@ class Controller extends BaseController
 		$this->_options['roots'] = [];
 
 		foreach ($this->roots as $root) {
-			if (is_string($root))
+			if (is_string($root)) {
 				$root = ['path' => $root];
-
-			if (!isset($root['class']))
+			}
+			
+			if (!isset($root['class'])) {
 				$root['class'] = Local::className();
-
+			}
+			
 			$root = Kant::createObject($root);
 
 			/** @var \Kant\Elfinder\Volume\Local $root */
-			if ($root->isAvailable())
+			if ($root->isAvailable()) {
 				$this->_options['roots'][] = $root->getRoot();
+			}
 		}
 
 		if (!empty($this->watermark)) {
