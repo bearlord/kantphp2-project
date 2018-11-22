@@ -30,9 +30,9 @@ class elFinderApi extends \elFinder
 
 					foreach ($methods as $method) {
 						if ($method && method_exists($plugin, $method)) {
-							if (!isset($this->plugins[$plugin->getName()]))
+							if (!isset($this->plugins[$plugin->getName()])) {
 								$this->plugins[$plugin->getName()] = $plugin;
-
+							}
 							$this->bind($cmd, array($this->plugins[$plugin->getName()], $method));
 						}
 					}

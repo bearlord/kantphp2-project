@@ -7,4 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
+    'Kant\\Tinymce\\' => array($vendorDir . '/bearlord/kantphp2-tinymce'),
+    'Kant\\Elfinder\\' => array($vendorDir . '/bearlord/kantphp2-elfinde'),
 );

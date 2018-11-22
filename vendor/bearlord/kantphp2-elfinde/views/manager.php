@@ -7,6 +7,7 @@
  */
 use Kant\Elfinder\Assets;
 use Kant\Helper\Json;
+use Kant\Helper\JsExpression;
 
 Assets::register($this);
 Assets::addLangFile($options['lang'], $this);

@@ -22,7 +22,8 @@ class Assets extends AssetBundle
 		'css/theme.css',
 	);
 	public $js = array(
-		'js/elfinder.min.js'
+		'js/elfinder.min.js',
+		'js/extras/editors.default.min.js'
 	);
 	public $depends = array(
 		'Kant\Elfinder\JQueryUiAssets',

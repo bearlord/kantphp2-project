@@ -23,7 +23,7 @@ class TinymceWidget extends InputWidget
 
     public $convention = [
         'plugins' => 'advlist autolink link image lists charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking spellchecker table contextmenu directionality emoticons paste textcolor',
-        'toolbar' => 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | filemanager image | media | link unlink anchor | print preview code  | forecolor backcolor'
+        'toolbar' => 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | image | media | link unlink anchor | print preview code  | forecolor backcolor'
     ];
 
     public function init()
@@ -68,15 +68,15 @@ class TinymceWidget extends InputWidget
 
     protected function setFilemanager()
     {
-        if (! empty($this->clientOptions['filemanager'])) {
-            $this->convention['plugins'] .= ' filemanager';
+        if (!empty($this->clientOptions['elfinder'])) {
+            $this->convention['plugins'] .= ' elfinder';
             $this->convention['toolbar'] .= ' |filemanager';
             $this->convention['image_advtab'] = true;
             $this->convention['relative_urls'] = false;
-            $this->convention['external_filemanager_path'] = $this->clientOptions['filemanager'];
+            $this->convention['external_filemanager_path'] = $this->clientOptions['elfinder'];
             $this->convention['file_picker_types'] = 'file image media';
             $this->convention['filemanager_title'] = Kant::t('kant', 'File Manager');
-            $this->convention['file_picker_callback'] = new JsExpression('function(cb,value,meta){var width=window.innerWidth-30;var height=window.innerHeight-60;if(width>1800)width=1800;if(height>1200)height=1200;if(width>600){var width_reduce=(width-20)%138;width=width-width_reduce+10}var urltype=meta.filetype;if(urltype===\'file\'){urltype=\'files\'}var title="FileManager";if(typeof this.settings.filemanager_title!=="undefined"&&this.settings.filemanager_title){title=this.settings.filemanager_title}var akey="key";if(typeof this.settings.filemanager_access_key!=="undefined"&&this.settings.filemanager_access_key){akey=this.settings.filemanager_access_key}var sort_by="";if(typeof this.settings.filemanager_sort_by!=="undefined"&&this.settings.filemanager_sort_by){sort_by="&sort_by="+this.settings.filemanager_sort_by}var descending="false";if(typeof this.settings.filemanager_descending!=="undefined"&&this.settings.filemanager_descending){descending=this.settings.filemanager_descending}var fldr="";if(typeof this.settings.filemanager_subfolder!=="undefined"&&this.settings.filemanager_subfolder){fldr="&fldr="+this.settings.filemanager_subfolder}var crossdomain="";if(typeof this.settings.filemanager_crossdomain!=="undefined"&&this.settings.filemanager_crossdomain){crossdomain="&crossdomain=1";if(window.addEventListener){window.addEventListener("message",filemanager_onMessage,false)}else{window.attachEvent("onmessage",filemanager_onMessage)}}tinymce.activeEditor.windowManager.open({title:title,file:this.settings.external_filemanager_path+"?type="+urltype+"&descending="+descending+sort_by+fldr+crossdomain+"&lang="+this.settings.language+"&akey="+akey,width:width,height:height,resizable:true,maximizable:true,inline:1},{setUrl:function(url){var name=url.substr(url.lastIndexOf("/")+1);var params={};if(meta.filetype=="image"){params={alt:name,target:"_blank"}}else if(meta.filetype=="file"){params={text:name,"title":name,target:"_blank"}}cb(url,params);}})}');
+            $this->convention['file_picker_callback'] = new JsExpression("function(callback,value,meta){tinymce.activeEditor.windowManager.open({file:this.settings.external_filemanager_path,title:'File Manager',width:900,height:450,resizable:'yes'},{oninsert:function(file,fm){var url,reg,info;url=fm.convAbsUrl(file.url);info=file.name+' ('+fm.formatSize(file.size)+')';if(meta.filetype=='file'){callback(url,{text:info,title:info})}if(meta.filetype=='image'){callback(url,{alt:info})}if(meta.filetype=='media'){callback(url)}}});return false}");
         }
     }
 }
