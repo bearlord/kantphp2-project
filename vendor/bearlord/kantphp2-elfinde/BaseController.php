@@ -88,7 +88,11 @@ class BaseController extends Controller{
 			if(is_array($_GET['filter'])) {
 				$options['onlyMimes'] = $_GET['filter'];
 			} else {
-				$options['onlyMimes'] = [$_GET['filter']];
+				if (strpos($_GET['filter'], "|") > 1) {
+					$options['onlyMimes'] = explode("|", $_GET['filter']);
+				} else {
+					$options['onlyMimes'] = [$_GET['filter']];
+				}	
 			}
 		}
 

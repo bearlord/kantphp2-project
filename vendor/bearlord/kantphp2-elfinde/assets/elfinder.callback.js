@@ -16,7 +16,6 @@ mihaildev.elFinder = {
         params = params + ",width=" + options.width;
         params = params + ",height=" + options.height;
 
-        console.log(params);
         var win = window.open(options.url, 'ElFinderManager' + options.id, params);
         win.focus()
     },

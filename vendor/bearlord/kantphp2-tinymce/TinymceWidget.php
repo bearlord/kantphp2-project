@@ -76,7 +76,7 @@ class TinymceWidget extends InputWidget
             $this->convention['external_filemanager_path'] = $this->clientOptions['elfinder'];
             $this->convention['file_picker_types'] = 'file image media';
             $this->convention['filemanager_title'] = Kant::t('kant', 'File Manager');
-            $this->convention['file_picker_callback'] = new JsExpression("function(callback,value,meta){tinymce.activeEditor.windowManager.open({file:this.settings.external_filemanager_path,title:'File Manager',width:900,height:450,resizable:'yes'},{oninsert:function(file,fm){var url,reg,info;url=fm.convAbsUrl(file.url);info=file.name+' ('+fm.formatSize(file.size)+')';if(meta.filetype=='file'){callback(url,{text:info,title:info})}if(meta.filetype=='image'){callback(url,{alt:info})}if(meta.filetype=='media'){callback(url)}}});return false}");
+            $this->convention['file_picker_callback'] = new JsExpression("function(callback,value,meta){var filetype=meta.filetype;if(filetype==='media'){filetype='audio|video'}var path=this.settings.external_filemanager_path;path=path+'&filter='+filetype;tinymce.activeEditor.windowManager.open({file:path,title:'File Manager',width:900,height:450,resizable:'yes'},{oninsert:function(file,fm){var url,reg,info;url=fm.convAbsUrl(file.url);info=file.name+' ('+fm.formatSize(file.size)+')';if(meta.filetype=='file'){callback(url,{text:info,title:info})}if(meta.filetype=='image'){callback(url,{alt:info})}if(meta.filetype=='media'){callback(url)}}});return false}");
         }
     }
 }
