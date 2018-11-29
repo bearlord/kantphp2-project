@@ -412,8 +412,8 @@ AppAsset::register($this);
 							<ul class="nav flex-column sub-menu">
 								<li class="nav-item d-none d-lg-block"> <a class="nav-link" href="<?= Url::to('/admin/article/index') ?>"><?= Kant::t('app', 'All Articles') ?></a></li>
 								<li class="nav-item d-none d-lg-block"> <a class="nav-link" href="<?= Url::to('/admin/article/add') ?>"><?= Kant::t('app', 'Post Article') ?></a></li>
-								<li class="nav-item"> <a class="nav-link" href="pages/layout/rtl-layout.html"><?= Kant::t('app', 'Categories') ?></a></li>
-								<li class="nav-item d-none d-lg-block"> <a class="nav-link" href="pages/layout/horizontal-menu.html"><?= Kant::t('app', 'Comments') ?></a></li>
+								<li class="nav-item"> <a class="nav-link" href="<?= Url::to('/admin/article-category/index') ?>"><?= Kant::t('app', 'Categories') ?></a></li>
+								<li class="nav-item d-none d-lg-block"> <a class="nav-link" href="<?= Url::to('/admin/article-comment/index') ?>"><?= Kant::t('app', 'Comments') ?></a></li>
 							</ul>
 						</div>
 					</li>

@@ -20,23 +20,27 @@ use Kant\Captcha\Captcha;
 										'options' => ['class' => 'form-horizontal'],
 							]);
 							?>
-							
-							<?= $form->field($model, 'username', [
-									'template' => "{label}\n{input}<i class=\"mdi mdi-account\"></i>\n<div>{error}</div>",
-									'options' => [
-										'class' => 'form-group',
-										'style' => 'height: 80px'
-									]
-							])->textInput(['placeholder' => '请输入用户名']) ?>
-							
-							<?= $form->field($model, 'password', [
+
+							<?=
+							$form->field($model, 'username', [
+								'template' => "{label}\n{input}<i class=\"mdi mdi-account\"></i>\n<div>{error}</div>",
+								'options' => [
+									'class' => 'form-group',
+									'style' => 'height: 80px'
+								]
+							])->textInput(['placeholder' => Kant::t('app', 'Please enter username')])
+							?>
+
+							<?=
+							$form->field($model, 'password', [
 								'template' => "{label}\n{input}<i class=\"mdi mdi-eye\"></i>\n<div>{error}</div>",
-									'options' => [
-										'class' => 'form-group',
-										'style' => 'height: 80px'
-									]
-							])->passwordInput(['placeholder' => '请输入密码']) ?>
-							
+								'options' => [
+									'class' => 'form-group',
+									'style' => 'height: 80px'
+								]
+							])->passwordInput(['placeholder' => Kant::t('app', 'Please enter password')])
+							?>
+
 							<div class="form-group">
 								<?=
 								$form->field($model, 'verifyCode', [
@@ -47,15 +51,19 @@ use Kant\Captcha\Captcha;
 								])->widget(Captcha::className(), [
 									'captchaAction' => '/common/service/captcha',
 									'template' => '<div class="row" style="position:relative"><div class="col-sm-12">{input}</div><div class="col-sm-3" style="position:absolute;right:0;top:-10px;text-align:right">{image}</div></div>',
-									'imageOptions' => ['alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer; height:40px;']
+									'imageOptions' => ['alt' => '点击换图', 'title' => '点击换图', 'style' => 'cursor:pointer; height:40px;'],
+									'options' => [
+										'class' => 'form-control',
+										'placeholder' => Kant::t('app', 'Please enter captcha')
+									]
 								])
 								?>
 							</div>
 
 							<div class="mt-5">
-								<?= Html::submitButton('登录', ['class' => 'btn btn-block btn-warning btn-lg font-weight-medium', 'name' => 'submit-button']) ?>
+<?= Html::submitButton('登录', ['class' => 'btn btn-block btn-warning btn-lg font-weight-medium', 'name' => 'submit-button']) ?>
 							</div>
-							<?php ActiveForm::end(); ?>
+<?php ActiveForm::end(); ?>
 						</div>
 					</div>
 				</div>

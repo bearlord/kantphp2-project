@@ -22,6 +22,11 @@ class BaseController extends Controller{
 	public $connectOptions = [];
 	public $plugin = [];
 
+	/**
+	 * Behaviors
+	 * 
+	 * @return type
+	 */
 	public function behaviors()
 	{
 		return [
@@ -38,6 +43,11 @@ class BaseController extends Controller{
 		];
 	}
 
+	/**
+	 * Options
+	 * 
+	 * @return type
+	 */
 	public function getOptions(){
 		return $this->connectOptions;
 	}
@@ -46,6 +56,11 @@ class BaseController extends Controller{
 		return $this->view->renderFile(__DIR__."/views/connect.php", ['options'=>$this->getOptions(), 'plugin' => $this->plugin]);
 	}
 
+	/**
+	 * Manager Options
+	 * 
+	 * @return type
+	 */
 	public function getManagerOptions(){
 		$options = [
 			'url'=> Url::to('connect'),

@@ -90,24 +90,30 @@ class ElFinder extends BaseWidjet
 			$this->language = self::getSupportedLanguage(Kant::$app->language);
 
 		$managerOptions = [];
-		if (!empty($this->filter))
+		if (!empty($this->filter)) {
 			$managerOptions['filter'] = $this->filter;
-
-		if (!empty($this->callbackFunction))
+		}
+		
+		if (!empty($this->callbackFunction)) {
 			$managerOptions['callback'] = $this->id;
-
-		if (!empty($this->language))
+		}
+		
+		if (!empty($this->language)) {
 			$managerOptions['lang'] = $this->language;
-
-		if (!empty($this->path))
+		}
+		
+		if (!empty($this->path)) {
 			$managerOptions['path'] = $this->path;
-
-		if (!empty($this->startPath))
+		}
+		
+		if (!empty($this->startPath)) {
 			$managerOptions['#'] = ElFinder::genPathHash($this->startPath);
-
-		if ($this->multiple)
+		}
+		
+		if ($this->multiple) {
 			$managerOptions['multiple'] = $this->multiple;
-
+		}
+		
 		$this->frameOptions['src'] = $this->getManagerUrl($this->controller, $managerOptions);
 
 		if (!isset($this->frameOptions['style'])) {

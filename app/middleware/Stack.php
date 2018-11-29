@@ -26,8 +26,8 @@ class Stack
         ],
 		
         'api' => [
-            'throttle:60,1',
-            'bindings',
+//            'throttle:60,1',
+//            'bindings',
         ],
     ];
 

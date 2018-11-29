@@ -19,6 +19,7 @@ class ConsoleAsset extends AssetBundle
 		'victory/node_modules/flag-icon-css/css/flag-icon.min.css',
 		'victory/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css',
 		'victory/css/style.css',
+//		'victory/css/fix.css',
 	];
 	public $js = [
 //		'/node_modules/jquery/dist/jquery.min.js',

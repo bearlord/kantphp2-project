@@ -22,9 +22,10 @@ class PathController extends BaseController
 
 	public function getOptions()
 	{
-		if ($this->_options !== null)
+		if ($this->_options !== null) {
 			return $this->_options;
-
+		}
+		
 		$subPath = Kant::$app->request->query('path', '');
 
 		$this->_options['roots'] = [];

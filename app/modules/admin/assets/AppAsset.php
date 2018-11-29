@@ -20,11 +20,12 @@ class AppAsset extends AssetBundle
 		'victory/node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css',
 		'victory/node_modules/font-awesome/css/font-awesome.min.css',
 		'victory/node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css',
-		'victory/css/style.css',		
+		'victory/css/style.css',
+		'victory/css/fix.css',
     ];
     public $js = [
 //		'/node_modules/jquery/dist/jquery.min.js',
-		'/node_modules/popper.js/dist/umd/popper.min.js',
+		'victory/node_modules/popper.js/dist/umd/popper.min.js',
 		'victory/node_modules/bootstrap/dist/js/bootstrap.min.js',
 		'victory/node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js',
 		'victory/node_modules/jquery-bar-rating/dist/jquery.barrating.min.js',
@@ -44,7 +45,7 @@ class AppAsset extends AssetBundle
 //        'Kant\Bootstrap\BootstrapAsset',
 //        'Kant\Bootstrap\BootstrapPluginAsset',
     ];
-	
+
 	public function publish($am)
 	{
 		$this->sourcePath = Kant::getAlias('@app') . '/assets';

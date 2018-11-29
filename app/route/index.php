@@ -20,7 +20,7 @@ $router->get("/welcome", function() {
 Router::get('/order/{id}', function($id, Query $query, Response $response) {
     $response->format = Response::FORMAT_JSON;
 
-    $item = $query->from("p_orders")
+    $item = $query->from("p_access")
                     ->where([
                         'id' => $id
                     ])->one();

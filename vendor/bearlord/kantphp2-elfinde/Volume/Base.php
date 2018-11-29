@@ -44,8 +44,9 @@ class Base extends BaseObject{
 	private $_defaults;
 
 	public function getDefaults(){
-		if($this->_defaults !== null)
+		if($this->_defaults !== null) {
 			return $this->_defaults;
+		}
 		$this->_defaults['read'] = false;
 		$this->_defaults['write'] = false;
 
