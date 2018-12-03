@@ -22,8 +22,8 @@ class TinymceWidget extends InputWidget
     public $clientOptions = [];
 
     public $convention = [
-        'plugins' => 'advlist autolink link image lists charmap print preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking spellchecker table contextmenu directionality emoticons paste textcolor',
-        'toolbar' => 'undo redo | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | image | media | link unlink anchor | print preview code  | forecolor backcolor'
+        'plugins' => 'advlist autolink link image lists charmap preview hr anchor pagebreak searchreplace wordcount visualblocks visualchars insertdatetime media nonbreaking spellchecker table contextmenu directionality emoticons paste textcolor code fullscreen',
+        'toolbar' => 'bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | styleselect | image | media | link unlink anchor | preview code  | forecolor backcolor fullscreen'
     ];
 
     public function init()

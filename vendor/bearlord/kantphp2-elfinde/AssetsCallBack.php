@@ -1,25 +1,28 @@
 <?php
-/**
- * Date: 23.01.14
- * Time: 0:51
- */
 
 namespace Kant\Elfinder;
 
-
 use Kant\View\AssetBundle;
 
-class AssetsCallBack extends AssetBundle{
-	public $js = array(
-		'elfinder.callback.js'
-	);
-	public $depends = array(
+class AssetsCallBack extends AssetBundle
+{
+	public $css = [
+		'elfinder.callback.css'
+	];
+
+	public $js = [
+		'elfinder.callback.js',
+		
+	];
+	
+	public $depends = [
 		'Kant\View\JqueryAsset'
-	);
+	];
 
 	public function init()
 	{
-		$this->sourcePath = __DIR__."/assets";
+		$this->sourcePath = __DIR__ . "/assets";
 		parent::init();
 	}
-} 
+
+}

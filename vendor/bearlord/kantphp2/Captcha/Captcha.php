@@ -119,6 +119,7 @@ class Captcha extends InputWidget
             $input = Html::textInput($this->name, $this->value, $this->options);
         }
         $route = $this->captchaAction;
+		/*
         if (is_array($route)) {
             $route['v'] = uniqid();
         } else {
@@ -127,6 +128,8 @@ class Captcha extends InputWidget
                 'v' => uniqid()
             ];
         }
+		 */
+		$route = Url::to($route, ['v' => uniqid()]);
         $image = Html::img($route, $this->imageOptions);
         echo strtr($this->template, [
             '{input}' => $input,

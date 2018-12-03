@@ -493,7 +493,7 @@ class BaseHtml
      */
     public static function img($src, $options = [])
     {
-        $options['src'] = Url::to($src[0], array_slice($src, 1));
+        $options['src'] = Url::to($src);
         if (! isset($options['alt'])) {
             $options['alt'] = '';
         }
