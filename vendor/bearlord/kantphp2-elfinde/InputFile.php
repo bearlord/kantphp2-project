@@ -97,7 +97,7 @@ class InputFile extends InputWidget
 		$src = 'aa';
 		$eles = [];
 		if (($value = $model->$attribute)) {
-			$src = $this->validateUrl($value) ? $value : Yii::$app->params['domain'] . $value;
+			$src = $this->validateUrl($value) ? $value : Kant::$app->params['domain'] . $value;
 		}
 
 		$eles[] = Html::img($src, ['class' => 'img-responsive img-thumbnail cus-img']);
