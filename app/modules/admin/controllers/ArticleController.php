@@ -11,16 +11,21 @@ class ArticleController extends AdminBaseController
 {
 
 	/**
-	 * Index
+	 * article lists
 	 */
 	public function indexAction()
 	{
+		$articleModel = new Article();
+		
+		$this->view->params['subtitle'] = Kant::t('app','Article List');
+		
 		return $this->view->render('index', [
+			'articleModel' => $articleModel
 		]);
 	}
 
 	/**
-	 * Add
+	 * add article
 	 */
 	public function addAction(Request $request, Response $response)
 	{
@@ -30,9 +35,20 @@ class ArticleController extends AdminBaseController
 			$data = $request->input();
 			$articleModel->load($data);
 			if ($articleModel->validate() ){
-				$articleModel->save();
+				$row = $articleModel->save();
+				if ($row) {
+					return Kant::$app->redirect->to('admin/article');
+				}
 			}
 		}
+		
+		$articleModel->art_state = 'drafted';
+		
+		$articleModel->is_link = 0;
+		
+		$articleModel->allow_comment = 1;
+		
+		$this->view->params['subtitle'] = Kant::t('app','Add Article');
 		return $this->view->render('add', [
 					'articleModel' => $articleModel
 		]);
