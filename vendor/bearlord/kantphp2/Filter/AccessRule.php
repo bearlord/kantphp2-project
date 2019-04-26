@@ -164,7 +164,7 @@ class AccessRule extends Component
                     return true;
                 }
             } elseif ($role === '@') {
-                if (! $user->getIsGuest()) {
+                if (!$user->getIsGuest()) {
                     return true;
                 }
             } elseif ($user->can($role)) {

@@ -186,7 +186,7 @@ class Captcha extends InputWidget
         }
         if (extension_loaded('gd')) {
             $gdInfo = gd_info();
-            if (! empty($gdInfo['FreeType Support'])) {
+            if (!empty($gdInfo['FreeType Support'])) {
                 return 'gd';
             }
         }

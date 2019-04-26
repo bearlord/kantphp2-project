@@ -326,7 +326,7 @@ class Controller extends Component
             'module',
             'routePattern'
         ] as $value) {
-            if (! empty($options[$value])) {
+            if (!empty($options[$value])) {
                 $this->$value = $options[$value];
             }
         }
