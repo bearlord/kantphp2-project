@@ -369,10 +369,10 @@ class View extends BaseView
         } elseif (strncmp($view, '/', 1) === 0) {
             // e.g. "/site/index"
             if (Kant::$app->controller !== null) {
-                $file = Kant::$app->controller->module->getViewPath() . DIRECTORY_SEPARATOR . ltrim($view, '/');
+                $file = Kant::$app->controller->module->getViewPath() . DIRECTORY_SEPARATOR . trim($view, '/');
             } else {
                 try {
-                    $file = $this->getViewPath() . DIRECTORY_SEPARATOR . ltrim($view, '/');
+                    $file = $this->getViewPath() . DIRECTORY_SEPARATOR . trim($view, '/');
                 } catch(\Exception $e) {
                     throw new InvalidCallException("Unable to locate view file for view '$view': no active controller.");
                 }
@@ -387,7 +387,8 @@ class View extends BaseView
 					$_controllerId = str_replace('/', DIRECTORY_SEPARATOR, Inflector::camel2id(Kant::$app->controller->id));
                     $file = Kant::$app->controller->module->getViewPath()  . DIRECTORY_SEPARATOR  . $_controllerId . DIRECTORY_SEPARATOR .  ltrim($view, '/') ;
                 } else {
-                    $file = $this->getViewPath()  . DIRECTORY_SEPARATOR . ltrim($view, '/');
+					$_controllerId = str_replace('/', DIRECTORY_SEPARATOR, Inflector::camel2id(Kant::$app->controller->id));
+                    $file = $this->getViewPath()  . DIRECTORY_SEPARATOR  . $_controllerId . DIRECTORY_SEPARATOR .  ltrim($view, '/') ;
                 }
 
             } catch(\Exception $e) {

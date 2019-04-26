@@ -26,7 +26,7 @@ class ControllerDispatcher {
      * @param string $method            
      * @return mixed
      */
-    public function dispatch(Route $route, $controller, $method) {
+    public function dispatch(Route $route, $controller, $method) {	 
         $parameters = $this->resolveClassMethodDependencies($route->parametersWithoutNulls(), $controller, $method);
 
         if (!empty($route->middleware())) {
